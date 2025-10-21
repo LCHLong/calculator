@@ -1,5 +1,6 @@
-const MAX_DECIMALS = 10;
-
+const MAX_DECIMALS = 10; // chữ số tối đa
+const MAX_NORMAL = 1e15;
+const MIN_NORMAL = 1e-15;
 /* --------- Định dạng số để hiển thị --------- */
 export function formatNumberForDisplay(value) {
     if (["Error", "Cannot divide by zero", "Overflow"].includes(value)) return value;
@@ -7,17 +8,25 @@ export function formatNumberForDisplay(value) {
     if (typeof value === "string" && value.endsWith(".")) return value;
 
     const n = Number(value);
-    if (!isFinite(n)) return "Overflow";
+    if (!isFinite(n)) return "Overflow"; // chỉ true overflow thực sự
 
-    const hasFraction = Math.round(n) !== n;
-    if (!hasFraction) return new Intl.NumberFormat("en-US").format(n);
+    const absN = Math.abs(n);
 
-    const fixed = Number(n.toFixed(10));
-    const parts = fixed.toString().split(".");
-    if (parts.length === 1) return new Intl.NumberFormat("en-US").format(fixed);
+    // số cực lớn → scientific
+    if (absN >= MAX_NORMAL) return n.toExponential(MAX_DECIMALS);
 
-    return `${new Intl.NumberFormat("en-US").format(Number(parts[0]))}.${parts[1].replace(/0+$/, "")}`;
+    // số cực nhỏ nhưng khác 0 → scientific
+    if (absN !== 0 && absN < MIN_NORMAL) return n.toExponential(MAX_DECIMALS);
+
+    // số nguyên → format với comma
+    if (Math.round(n) === n) return new Intl.NumberFormat("en-US").format(n);
+
+    // số thập phân → tối đa MAX_DECIMALS chữ số có nghĩa
+    let str = n.toPrecision(MAX_DECIMALS);
+    if (str.includes(".")) str = str.replace(/\.?0+$/, ""); // bỏ số 0 thừa
+    return str;
 }
+
 
 
 /* --------- Đánh giá biểu thức theo chuẩn toán học (BODMAS) --------- */

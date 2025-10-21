@@ -58,22 +58,6 @@ html {
 }
 
 /* ==========================
-   Footer Note
-========================== */
-.footer-note {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-    margin-top: 10px;
-    user-select: none;
-}
-
-.footer-note span {
-    color: #0078d4;
-    font-weight: 600;
-}
-
-/* ==========================
    Right Panel
 ========================== */
 .right-panel {

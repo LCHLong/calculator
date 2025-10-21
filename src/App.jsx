@@ -248,10 +248,6 @@ export default function App() {
 
                     <MemoryBar actions={actions} />
                     <Keypad actions={actions} />
-
-                    <div className="footer-note">
-                        Calculator_IA — <span>Scientific</span> Mode
-                    </div>
                 </div>
 
                 {/* RIGHT PANEL */}
