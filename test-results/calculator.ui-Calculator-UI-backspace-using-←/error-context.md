@@ -1,0 +1,43 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - button "Menu" [ref=e7] [cursor=pointer]: ≡
+      - generic [ref=e8]: Standard
+    - button "History" [ref=e10]: 🕒
+  - textbox [ref=e13]
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - button "%" [ref=e16] [cursor=pointer]
+      - button "CE" [ref=e17] [cursor=pointer]
+      - button "C" [ref=e18] [cursor=pointer]
+      - button "←" [active] [ref=e19] [cursor=pointer]
+    - generic [ref=e20]:
+      - button "1/x" [ref=e21] [cursor=pointer]
+      - button "x²" [ref=e22] [cursor=pointer]
+      - button "√x" [ref=e23] [cursor=pointer]
+      - button "÷" [ref=e24] [cursor=pointer]
+    - generic [ref=e25]:
+      - button "7" [ref=e26] [cursor=pointer]
+      - button "8" [ref=e27] [cursor=pointer]
+      - button "9" [ref=e28] [cursor=pointer]
+      - button "×" [ref=e29] [cursor=pointer]
+    - generic [ref=e30]:
+      - button "4" [ref=e31] [cursor=pointer]
+      - button "5" [ref=e32] [cursor=pointer]
+      - button "6" [ref=e33] [cursor=pointer]
+      - button "−" [ref=e34] [cursor=pointer]
+    - generic [ref=e35]:
+      - button "1" [ref=e36] [cursor=pointer]
+      - button "2" [ref=e37] [cursor=pointer]
+      - button "3" [ref=e38] [cursor=pointer]
+      - button "+" [ref=e39] [cursor=pointer]
+    - generic [ref=e40]:
+      - button "+/-" [ref=e41] [cursor=pointer]
+      - button "0" [ref=e42] [cursor=pointer]
+      - button "." [ref=e43] [cursor=pointer]
+      - button "=" [ref=e44] [cursor=pointer]
+  - generic [ref=e45]: Calculator_IA — Scientific Mode
+```

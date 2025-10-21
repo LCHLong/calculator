@@ -21,7 +21,11 @@ export function formatNumberForDisplay(value) {
 /* --------- Đánh giá biểu thức theo chuẩn toán học (BODMAS) --------- */
 export function evaluateExpression(expr) {
     try {
-        const sanitized = expr.replace(/×/g, "*").replace(/÷/g, "/");
+        // Thêm replace cho dấu trừ Unicode
+        const sanitized = expr
+            .replace(/×/g, "*")
+            .replace(/÷/g, "/")
+            .replace(/−/g, "-"); // <-- sửa ở đây
         // eslint-disable-next-line no-eval
         const result = eval(sanitized);
         if (!isFinite(result)) return "Cannot divide by zero";

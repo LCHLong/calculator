@@ -49,13 +49,15 @@ export default function App() {
         setDisplay("0");
     };
 
+    /* ======== BACKSPACE ======== */
     const backspace = () => {
         if (error) return clearAll();
-        if (resultLocked) return;
+        setResultLocked(false); // <-- thêm dòng này để cho phép xóa sau khi nhấn =
         setDisplay((prev) =>
             prev.length <= 1 || (prev.length === 2 && prev.startsWith("-")) ? "0" : prev.slice(0, -1)
         );
     };
+
 
     /* ======== TOÁN TỬ 1 NGÔI ======== */
     const handleUnary = (op) => {
