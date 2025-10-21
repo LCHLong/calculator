@@ -1,0 +1,14 @@
+.keypad {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+}
+
+.row:last-child button {
+    height: 56px;
+}

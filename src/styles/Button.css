@@ -1,0 +1,43 @@
+.keypad button {
+    flex: 1 1 0;
+    height: 52px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #f9f9f9;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.1s ease, transform 0.05s ease;
+    font-weight: 500;
+}
+
+.keypad button:hover {
+    background: #f1f1f1;
+}
+
+.keypad button:active {
+    background: #e6e6e6;
+    transform: scale(0.98);
+}
+
+.keypad .mem {
+    font-weight: 600;
+    background: #fcfcfc;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.keypad .func {
+    background: #f3f4f6;
+}
+
+.keypad .op {
+    background: #e7f1fb;
+    font-weight: 700;
+    color: #0a60c2;
+}
+
+.keypad .equals {
+    background: #0078d4;
+    color: white;
+    font-weight: 700;
+    border: none;
+}
