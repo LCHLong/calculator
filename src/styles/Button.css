@@ -1,13 +1,22 @@
 .keypad button {
     flex: 1 1 0;
-    height: 52px;
+    min-height: 48px;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     background: #f9f9f9;
-    font-size: 18px;
+    font-size: 1.2rem;
+    /* responsive font-size */
     cursor: pointer;
     transition: background 0.1s ease, transform 0.05s ease;
     font-weight: 500;
+}
+
+/* Scale font and height on smaller screens */
+@media (max-width: 480px) {
+    .keypad button {
+        font-size: 1rem;
+        min-height: 42px;
+    }
 }
 
 .keypad button:hover {

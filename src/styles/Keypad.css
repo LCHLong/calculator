@@ -2,13 +2,51 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    width: 100%;
+    height: 80%;
+    /* chiếm phần còn lại của màn hình */
 }
 
 .row {
     display: flex;
     gap: 8px;
+    flex: 1;
+    /* mỗi hàng chia đều chiều cao */
 }
 
-.row:last-child button {
-    height: 56px;
+.keypad button {
+    flex: 1;
+    /* chia đều chiều ngang */
+    font-size: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: background 0.1s ease, transform 0.05s ease;
+}
+
+.keypad button:hover {
+    background: #f1f1f1;
+}
+
+.keypad button:active {
+    background: #e6e6e6;
+    transform: scale(0.98);
+}
+
+.keypad .op {
+    background: #e7f1fb;
+    font-weight: 700;
+    color: #0a60c2;
+}
+
+.keypad .func {
+    background: #f3f4f6;
+}
+
+.keypad .equals {
+    background: #0078d4;
+    color: white;
+    font-weight: 700;
+    border: none;
 }

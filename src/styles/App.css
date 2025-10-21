@@ -1,27 +1,31 @@
 .calculator-root {
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px;
+    padding: 8px;
     background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
+    box-sizing: border-box;
 }
 
 .calculator {
-    width: 340px;
+    width: 100%;
+    height: 100%;
     background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    padding: 16px 18px 20px;
+    border-radius: 0;
+    /* sát mép màn hình */
+    box-shadow: none;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border-bottom: 3px solid rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
 }
 
 .footer-note {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: #666;
     margin-top: 10px;
     user-select: none;
