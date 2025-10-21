@@ -50,20 +50,6 @@ test.describe("Calculator UI", () => {
         await expect(display).toHaveText("0");
     });
 
-    // test("backspace using ←", async ({ page }) => {
-    //     const display = page.getByTestId("display");
-    //     await page.click('text=1');
-    //     await page.click('text=2');
-    //     await page.click('text=←');
-
-    //     // chờ React render
-    //     await page.waitForFunction(() => {
-    //         const el = document.querySelector('[data-testid="display"]');
-    //         return el && el.innerText.trim() === "1";
-    //     });
-    //     await expect(display).toHaveText("1");
-
-    // });
 
     test("toggle sign using +/-", async ({ page }) => {
         const display = page.getByTestId("display");

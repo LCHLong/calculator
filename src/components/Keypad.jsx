@@ -48,7 +48,7 @@ export default function Keypad({ actions }) {
             </div>
 
             <div className="row">
-                <Button label="+/-" className="func" onClick={toggleSign} />
+                <Button label="+／−" className="func pretty-sign" onClick={toggleSign} />
                 <Button label="0" onClick={() => inputDigit("0")} />
                 <Button label="." onClick={() => inputDigit(".")} />
                 <Button label="=" className="equals" onClick={handleEqual} />

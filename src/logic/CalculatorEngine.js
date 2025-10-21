@@ -3,15 +3,22 @@ const MAX_DECIMALS = 10;
 /* --------- Định dạng số để hiển thị --------- */
 export function formatNumberForDisplay(value) {
     if (["Error", "Cannot divide by zero", "Overflow"].includes(value)) return value;
+
+    if (typeof value === "string" && value.endsWith(".")) return value;
+
     const n = Number(value);
     if (!isFinite(n)) return "Overflow";
+
     const hasFraction = Math.round(n) !== n;
     if (!hasFraction) return new Intl.NumberFormat("en-US").format(n);
-    const fixed = Number(n.toFixed(MAX_DECIMALS));
+
+    const fixed = Number(n.toFixed(10));
     const parts = fixed.toString().split(".");
     if (parts.length === 1) return new Intl.NumberFormat("en-US").format(fixed);
+
     return `${new Intl.NumberFormat("en-US").format(Number(parts[0]))}.${parts[1].replace(/0+$/, "")}`;
 }
+
 
 /* --------- Đánh giá biểu thức theo chuẩn toán học (BODMAS) --------- */
 export function evaluateExpression(expr) {

@@ -1,26 +1,16 @@
 import React from "react";
 import "../styles/Display.css";
+import { formatNumberForDisplay } from "../logic/CalculatorEngine";
 
-/**
- * Component hiển thị màn hình máy tính:
- *  - Dòng trên: phép toán hiện tại (expression)
- *  - Dòng dưới: giá trị đang nhập hoặc kết quả (display)
- *  - Góc trái: ký hiệu bộ nhớ (M)
- */
-export default function Display({
-    display,
-    memoryFlag,
-    formatNumberForDisplay,
-    expression
-}) {
+export default function Display({ display, expression, memoryFlag, resultLocked }) {
     return (
         <div className="display-area">
             <div className="memory-indicator">{memoryFlag ? "M" : ""}</div>
 
-            {/* Dòng trên - phép toán hiện tại */}
-            <div className="expression">{expression}</div>
+            <div className="expression">
+                {expression ? `${expression}${resultLocked ? " =" : ""}` : ""}
+            </div>
 
-            {/* Dòng dưới - giá trị đang nhập / kết quả */}
             <div
                 className="display"
                 role="textbox"
@@ -29,7 +19,6 @@ export default function Display({
             >
                 {formatNumberForDisplay(display)}
             </div>
-
         </div>
     );
 }

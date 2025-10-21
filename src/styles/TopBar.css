@@ -19,5 +19,21 @@
 
 .mode {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 30px;
+    align-self: auto;
+}
+
+/* Ẩn trên desktop */
+.kebab-btn {
+    display: none;
+}
+
+/* Chỉ hiện khi width <= 768px */
+@media (max-width: 768px) {
+    .kebab-btn.mobile-only {
+        display: block;
+        font-size: 24px;
+        border: none;
+        background: transparent
+    }
 }

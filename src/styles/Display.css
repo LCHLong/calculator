@@ -12,22 +12,42 @@
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
-.expression {
-    font-size: 1.5rem;
-    color: #666;
-    margin-bottom: 6px;
-    height: 24px;
-    text-align: right;
+.display-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
     width: 100%;
+}
+
+.expression {
+    font-size: 1.2rem;
+    opacity: 0.6;
     overflow-x: auto;
     white-space: nowrap;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 0.5rem;
 }
 
 .display {
-    font-size: 4rem;
     font-weight: 700;
     text-align: right;
     width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
     line-height: 1.2;
-    word-wrap: break-word;
+    font-size: 4rem;
+    /* max size */
+    transition: font-size 0.1s ease-out;
+}
+
+.fit-text {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: right;
+    transition: font-size 0.1s ease-out;
 }

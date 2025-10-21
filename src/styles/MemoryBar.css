@@ -1,0 +1,34 @@
+.memory-bar {
+    display: flex;
+    gap: 6px;
+    margin: 8px 0;
+    justify-content: center;
+}
+
+.memory-bar button {
+    flex: 1;
+    min-height: 32px;
+    font-size: 1rem;
+    font-weight: 200;
+    border: none;
+    cursor: pointer;
+    background: #ffffff;
+    transition: background 0.1s ease, transform 0.05s ease;
+}
+
+.memory-bar button:hover {
+    background: #f1f1f1;
+}
+
+.memory-bar button:active {
+    background: #e6e6e6;
+    transform: scale(0.97);
+}
+
+/* Responsive nhỏ màn hình */
+@media (max-width: 480px) {
+    .memory-bar button {
+        font-size: 0.9rem;
+        min-height: 36px;
+    }
+}
