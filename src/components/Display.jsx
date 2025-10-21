@@ -21,9 +21,15 @@ export default function Display({
             <div className="expression">{expression}</div>
 
             {/* Dòng dưới - giá trị đang nhập / kết quả */}
-            <div className="display" role="textbox" aria-live="polite">
+            <div
+                className="display"
+                role="textbox"
+                aria-live="polite"
+                data-testid="display"
+            >
                 {formatNumberForDisplay(display)}
             </div>
+
         </div>
     );
 }

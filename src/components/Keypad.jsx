@@ -5,21 +5,13 @@ import Button from "./Button";
 export default function Keypad({ actions }) {
     const {
         inputDigit, clearEntry, clearAll, backspace,
-        toggleSign, applyUnary, handlePercent,
+        toggleSign, handleUnary, handlePercent,
         handleOperator, handleEqual,
         memoryClear, memoryRecall, memoryStore, memoryAdd, memorySubtract
     } = actions;
 
     return (
         <div className="keypad">
-            {/* <div className="row">
-                <Button label="MC" className="mem" onClick={memoryClear} />
-                <Button label="MR" className="mem" onClick={memoryRecall} />
-                <Button label="M+" className="mem" onClick={memoryAdd} />
-                <Button label="M−" className="mem" onClick={memorySubtract} />
-                <Button label="MS" className="mem" onClick={memoryStore} />
-            </div> */}
-
             <div className="row">
                 <Button label="%" className="func" onClick={handlePercent} />
                 <Button label="CE" className="func" onClick={clearEntry} />
@@ -28,9 +20,9 @@ export default function Keypad({ actions }) {
             </div>
 
             <div className="row">
-                <Button label="1/x" className="func" onClick={() => applyUnary("inverse")} />
-                <Button label="x²" className="func" onClick={() => applyUnary("square")} />
-                <Button label="√x" className="func" onClick={() => applyUnary("sqrt")} />
+                <Button label="1/x" className="func" onClick={() => handleUnary("inverse")} />
+                <Button label="x²" className="func" onClick={() => handleUnary("square")} />
+                <Button label="√x" className="func" onClick={() => handleUnary("sqrt")} />
                 <Button label="÷" className="op" onClick={() => handleOperator("÷")} />
             </div>
 

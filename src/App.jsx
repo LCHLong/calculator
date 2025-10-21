@@ -20,7 +20,6 @@ export default function App() {
     const [lastOperand, setLastOperand] = useState(null);
     const [resultLocked, setResultLocked] = useState(false);
 
-    /* ======== INPUT ======== */
     const inputDigit = (d) => {
         if (error) return;
         if (resultLocked) {
@@ -34,7 +33,6 @@ export default function App() {
         else setDisplay((prev) => prev + d);
     };
 
-    /* ======== CLEAR ======== */
     const clearAll = () => {
         setDisplay("0");
         setExpression("");
@@ -49,17 +47,14 @@ export default function App() {
         setDisplay("0");
     };
 
-    /* ======== BACKSPACE ======== */
     const backspace = () => {
         if (error) return clearAll();
-        setResultLocked(false); // <-- thêm dòng này để cho phép xóa sau khi nhấn =
+        setResultLocked(false);
         setDisplay((prev) =>
             prev.length <= 1 || (prev.length === 2 && prev.startsWith("-")) ? "0" : prev.slice(0, -1)
         );
     };
 
-
-    /* ======== TOÁN TỬ 1 NGÔI ======== */
     const handleUnary = (op) => {
         if (error) return;
         const result = applyUnary(op, display);
@@ -71,14 +66,12 @@ export default function App() {
         setDisplay(String(result));
     };
 
-    /* ======== PERCENT ======== */
     const handlePercent = () => {
         if (error) return;
         const result = applyPercent(display);
         setDisplay(String(result));
     };
 
-    /* ======== TOÁN TỬ 2 NGÔI ======== */
     const handleOperator = (op) => {
         if (error) return;
         if (resultLocked) {
@@ -91,7 +84,6 @@ export default function App() {
         setLastOperator(op);
     };
 
-    /* ======== DẤU = ======== */
     const handleEqual = () => {
         if (error) return;
         let exprToEval = expression;
@@ -112,14 +104,12 @@ export default function App() {
         }
     };
 
-    /* ======== BỘ NHỚ ======== */
     const memoryClear = () => { memoryRef.current = 0; setMemoryFlag(false); };
     const memoryRecall = () => { setDisplay(String(memoryRef.current)); setResultLocked(false); };
     const memoryStore = () => { memoryRef.current = Number(display); setMemoryFlag(true); setResultLocked(false); };
     const memoryAdd = () => { memoryRef.current += Number(display); setMemoryFlag(true); };
     const memorySubtract = () => { memoryRef.current -= Number(display); setMemoryFlag(true); };
 
-    /* ======== ACTIONS ======== */
     const actions = {
         inputDigit, clearAll, clearEntry, backspace,
         toggleSign: () => setDisplay(display.startsWith("-") ? display.slice(1) : "-" + display),

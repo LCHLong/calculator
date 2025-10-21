@@ -1,8 +1,3 @@
-/* ======================================================
-   CalculatorEngine.js
-   Chứa các hàm logic cho máy tính chuẩn toán học (BODMAS)
-   ====================================================== */
-
 const MAX_DECIMALS = 10;
 
 /* --------- Định dạng số để hiển thị --------- */
@@ -21,11 +16,10 @@ export function formatNumberForDisplay(value) {
 /* --------- Đánh giá biểu thức theo chuẩn toán học (BODMAS) --------- */
 export function evaluateExpression(expr) {
     try {
-        // Thêm replace cho dấu trừ Unicode
         const sanitized = expr
             .replace(/×/g, "*")
             .replace(/÷/g, "/")
-            .replace(/−/g, "-"); // <-- sửa ở đây
+            .replace(/−/g, "-");
         // eslint-disable-next-line no-eval
         const result = eval(sanitized);
         if (!isFinite(result)) return "Cannot divide by zero";
