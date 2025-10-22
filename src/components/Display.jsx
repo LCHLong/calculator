@@ -39,7 +39,7 @@ export default function Display({ display, expression, memoryFlag, resultLocked 
     return (
         <div className="display-area">
             <div className="memory-indicator">{memoryFlag ? "M" : ""}</div>
-            <div className="expression">{expression ? `${expression}${resultLocked ? " =" : ""}` : ""}</div>
+            <div className="expression">{expression ? `${expression}${resultLocked ? "" : ""}` : ""}</div>
 
             <div className="display-wrapper" ref={containerRef}>
                 <div

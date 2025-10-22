@@ -156,54 +156,43 @@ export default function App() {
     const handleEqual = () => {
         if (error) return;
 
-        let exprToEval = "";
-        let currentOperand = display;
-
-        // Nếu chưa có expression, chỉ hiển thị lại giá trị hiện tại
-        if (!expression && !lastOperator) return;
-
-        // Trường hợp người dùng đang nhập và bấm "=" lần đầu
-        if (!resultLocked) {
-            exprToEval = expression ? expression + " " + display : display;
-            const result = evaluateExpression(exprToEval);
-
-            if (["Cannot divide by zero", "Error"].includes(result)) {
-                setError(result);
-                setDisplay(result);
-                return;
-            }
-
+        // Trường hợp repeat "="
+        if (resultLocked && lastOperator && lastOperand != null) {
+            const newExpr = `${display} ${lastOperator} ${lastOperand}`;
+            const result = evaluateExpression(newExpr);
             setDisplay(String(result));
+            setExpression(`${newExpr} =`);
+            setHistoryList(prev => [{ expression: `${newExpr} =`, result }, ...prev]);
+            return;
+        }
+
+        // Trường hợp chỉ nhập 1 số rồi nhấn "="
+        if (!expression && display !== "") {
+            setResultLocked(true);
+            setExpression(`${display} =`);
+            setHistoryList(prev => [{ expression: `${display} =`, result: display }, ...prev]);
+            return;
+        }
+
+        // Bình thường: có phép tính đầy đủ
+        if (expression && !resultLocked) {
+            const fullExpr = expression + display;
+            const result = evaluateExpression(fullExpr);
+            setDisplay(String(result));
+            setExpression(`${fullExpr} =`);
             setResultLocked(true);
 
-            // Lưu operator và operand cuối cùng cho repeat "="
-            const parts = exprToEval.trim().split(" ");
-            const op = parts[parts.length - 2];
-            const operand = parts[parts.length - 1];
-            setLastOperator(op);
-            setLastOperand(operand);
-
-            // Ghi lịch sử
-            setHistoryList(prev => [{ expression: exprToEval, result }, ...prev]);
-        }
-
-        // Trường hợp đã bấm "=" trước đó và muốn repeat phép tính
-        else if (lastOperator && lastOperand) {
-            exprToEval = display + " " + lastOperator + " " + lastOperand;
-            const result = evaluateExpression(exprToEval);
-
-            if (["Cannot divide by zero", "Error"].includes(result)) {
-                setError(result);
-                setDisplay(result);
-                return;
+            // Lưu để repeat được
+            const match = expression.match(/([+\-×÷])$/);
+            if (match) {
+                setLastOperator(match[1]);
+                setLastOperand(display);
             }
 
-            setDisplay(String(result));
-
-            // Lưu lại vào history mỗi lần repeat
-            setHistoryList(prev => [{ expression: exprToEval, result }, ...prev]);
+            setHistoryList(prev => [{ expression: `${fullExpr} =`, result }, ...prev]);
         }
     };
+
 
 
     /* ==========================

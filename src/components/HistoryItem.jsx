@@ -6,7 +6,7 @@ export default function HistoryItem({ item, onClick }) {
     return (
         <div className="history-item" onClick={onClick}>
             <div className="expression">
-                {item.expression} =
+                {item.expression}
             </div>
 
             <div className="result">
