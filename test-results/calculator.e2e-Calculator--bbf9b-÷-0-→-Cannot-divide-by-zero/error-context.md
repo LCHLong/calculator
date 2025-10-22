@@ -1,0 +1,54 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - button "Menu" [ref=e8] [cursor=pointer]: ≡
+      - generic [ref=e9]: Standard
+    - textbox [ref=e11]
+    - generic [ref=e12]:
+      - button "MC" [ref=e13] [cursor=pointer]
+      - button "MR" [ref=e14] [cursor=pointer]
+      - button "M+" [ref=e15] [cursor=pointer]
+      - button "M-" [ref=e16] [cursor=pointer]
+      - button "MS" [ref=e17] [cursor=pointer]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - button "percent" [ref=e20] [cursor=pointer]: "%"
+        - button "ce" [ref=e21] [cursor=pointer]: CE
+        - button "clear" [ref=e22] [cursor=pointer]: C
+        - button "backspace" [ref=e23] [cursor=pointer]: ←
+      - generic [ref=e24]:
+        - button "inverse" [ref=e25] [cursor=pointer]: 1/x
+        - button "square" [ref=e26] [cursor=pointer]: x²
+        - button "sqrt" [ref=e27] [cursor=pointer]: √x
+        - button "divide" [ref=e28] [cursor=pointer]: ÷
+      - generic [ref=e29]:
+        - button "7" [ref=e30] [cursor=pointer]
+        - button "8" [ref=e31] [cursor=pointer]
+        - button "9" [ref=e32] [cursor=pointer]
+        - button "multiply" [ref=e33] [cursor=pointer]: ×
+      - generic [ref=e34]:
+        - button "4" [ref=e35] [cursor=pointer]
+        - button "5" [ref=e36] [cursor=pointer]
+        - button "6" [ref=e37] [cursor=pointer]
+        - button "minus" [ref=e38] [cursor=pointer]: −
+      - generic [ref=e39]:
+        - button "1" [ref=e40] [cursor=pointer]
+        - button "2" [ref=e41] [cursor=pointer]
+        - button "3" [ref=e42] [cursor=pointer]
+        - button "plus" [ref=e43] [cursor=pointer]: +
+      - generic [ref=e44]:
+        - button "toggleSign" [ref=e45] [cursor=pointer]: +／−
+        - button "0" [ref=e46] [cursor=pointer]
+        - button "dot" [ref=e47] [cursor=pointer]: .
+        - button "equals" [ref=e48] [cursor=pointer]: =
+  - generic [ref=e49]:
+    - generic [ref=e50]:
+      - button "History" [ref=e51] [cursor=pointer]
+      - button "Memory" [ref=e52] [cursor=pointer]
+    - generic [ref=e53]:
+      - heading "History" [level=3] [ref=e54]
+      - generic [ref=e55]: There's no history yet
+```
