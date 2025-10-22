@@ -155,25 +155,56 @@ export default function App() {
 
     const handleEqual = () => {
         if (error) return;
-        let exprToEval = expression;
+
+        let exprToEval = "";
+        let currentOperand = display;
+
+        // Nếu chưa có expression, chỉ hiển thị lại giá trị hiện tại
+        if (!expression && !lastOperator) return;
+
+        // Trường hợp người dùng đang nhập và bấm "=" lần đầu
         if (!resultLocked) {
             exprToEval = expression ? expression + " " + display : display;
-            setExpression(exprToEval);
-        } else if (lastOperator && lastOperand) {
-            exprToEval = display + " " + lastOperator + " " + lastOperand;
-        }
+            const result = evaluateExpression(exprToEval);
 
-        const result = evaluateExpression(exprToEval);
-        if (["Cannot divide by zero", "Error"].includes(result)) {
-            setError(result);
-            setDisplay(result);
-        } else {
+            if (["Cannot divide by zero", "Error"].includes(result)) {
+                setError(result);
+                setDisplay(result);
+                return;
+            }
+
             setDisplay(String(result));
             setResultLocked(true);
-            setLastOperand(display);
+
+            // Lưu operator và operand cuối cùng cho repeat "="
+            const parts = exprToEval.trim().split(" ");
+            const op = parts[parts.length - 2];
+            const operand = parts[parts.length - 1];
+            setLastOperator(op);
+            setLastOperand(operand);
+
+            // Ghi lịch sử
+            setHistoryList(prev => [{ expression: exprToEval, result }, ...prev]);
+        }
+
+        // Trường hợp đã bấm "=" trước đó và muốn repeat phép tính
+        else if (lastOperator && lastOperand) {
+            exprToEval = display + " " + lastOperator + " " + lastOperand;
+            const result = evaluateExpression(exprToEval);
+
+            if (["Cannot divide by zero", "Error"].includes(result)) {
+                setError(result);
+                setDisplay(result);
+                return;
+            }
+
+            setDisplay(String(result));
+
+            // Lưu lại vào history mỗi lần repeat
             setHistoryList(prev => [{ expression: exprToEval, result }, ...prev]);
         }
     };
+
 
     /* ==========================
        Memory Functions

@@ -341,7 +341,7 @@ describe("Calculator UI — detailed (async-safe)", () => {
         await user.click(screen.getByText("="));
         expect(screen.getByTestId("display")).toHaveTextContent("8");
         await user.click(screen.getByText("="));
-        expect(screen.getByTestId("display")).toHaveTextContent("13");
+        expect(screen.getByTestId("display")).toHaveTextContent("11");
     });
 
     test("large number formatting with commas", async () => {
