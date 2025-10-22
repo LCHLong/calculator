@@ -5,20 +5,36 @@ import { formatNumberForDisplay } from "../logic/CalculatorEngine";
 export default function Display({ display, expression, memoryFlag, resultLocked }) {
     const containerRef = useRef(null);
     const contentRef = useRef(null);
-    const [scale, setScale] = useState(1);
+    const [fontSize, setFontSize] = useState(64); // mặc định 4rem = 64px
 
     useEffect(() => {
         const container = containerRef.current;
         const content = contentRef.current;
         if (!container || !content) return;
 
-        // chiều rộng container và nội dung
-        const containerWidth = container.clientWidth;
-        const contentWidth = content.scrollWidth;
+        let minFont = 12;
+        let maxFont = 64;
+        let font = maxFont;
 
-        const newScale = contentWidth > containerWidth ? containerWidth / contentWidth : 1;
-        setScale(newScale);
+        content.style.fontSize = `${font}px`;
+
+        // Binary search cho font-size phù hợp
+        while (minFont <= maxFont) {
+            content.style.fontSize = `${font}px`;
+            const contentWidth = content.scrollWidth;
+            const containerWidth = container.clientWidth;
+
+            if (contentWidth > containerWidth) {
+                maxFont = font - 1;
+            } else {
+                minFont = font + 1;
+            }
+            font = Math.floor((minFont + maxFont) / 2);
+        }
+
+        setFontSize(font);
     }, [display]);
+
 
     return (
         <div className="display-area">
@@ -29,7 +45,7 @@ export default function Display({ display, expression, memoryFlag, resultLocked 
                 <div
                     className="display"
                     ref={contentRef}
-                    style={{ transform: `scale(${scale})`, transformOrigin: "right center" }}
+                    style={{ fontSize: `${fontSize}px` }}
                     role="textbox"
                     aria-live="polite"
                     data-testid="display"
