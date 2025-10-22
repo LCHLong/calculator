@@ -1,53 +1,59 @@
 .display-area {
     background: #f7f8fa;
     border-radius: 8px;
-    padding: 16px;
+    padding: 1rem;
+    /* giảm padding trên mobile sẽ giúp gọn hơn */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     min-height: 20%;
     width: 100%;
+    max-width: 100vw;
+    /* KHÔNG vượt màn hình */
+    box-sizing: border-box;
+    /* bao gồm padding trong width */
     position: relative;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* ngăn tràn */
 }
 
 .display-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 1rem;
-    width: 100%;
-}
-
-.expression {
-    font-size: 1.2rem;
-    opacity: 0.6;
-    overflow-x: auto;
-    white-space: nowrap;
-    width: 100%;
-    text-align: right;
-    margin-bottom: 0.5rem;
+    justify-content: flex-end;
 }
 
 .display {
     font-weight: 700;
     text-align: right;
-    width: 100%;
-    overflow: hidden;
     white-space: nowrap;
     line-height: 1.2;
     font-size: 4rem;
-    /* max size */
-    transition: font-size 0.1s ease-out;
+    transition: transform 0.1s ease-out;
+    display: inline-block;
+    max-width: 100%;
+    /* không vượt container */
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.fit-text {
-    display: inline-block;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: right;
-    transition: font-size 0.1s ease-out;
+/* Responsive */
+@media (max-width: 768px) {
+    .display-area {
+        padding: 0.5rem;
+    }
+
+    .display {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .display {
+        font-size: 2rem;
+    }
 }
