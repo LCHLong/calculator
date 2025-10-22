@@ -52,24 +52,42 @@ export default function App() {
     =========================== */
     const inputDigit = (d) => {
         if (error) return;
+
+        // Ngăn tràn hiển thị
         if (display.length >= 15 && !resultLocked) {
             setError("Overflow");
             setDisplay("Overflow");
             return;
         }
+
+        // Nếu vừa nhấn "=" thì bắt đầu phép mới
         if (resultLocked) {
             setDisplay(d === "." ? "0." : d);
             setExpression("");
             setResultLocked(false);
             return;
         }
+
+        // Nếu là dấu thập phân
         if (d === ".") {
             if (display.includes(".")) return;
             setDisplay(display === "0" || display === "" ? "0." : display + ".");
             return;
         }
-        setDisplay(display === "0" ? d : display + d);
+
+        //Sửa tại đây — xử lý đặc biệt "-0"
+        if (display === "0") {
+            setDisplay(d);
+            return;
+        }
+        if (display === "-0") {
+            setDisplay("-" + d);
+            return;
+        }
+
+        setDisplay(display + d);
     };
+
 
     const clearAll = () => {
         setDisplay("0");
